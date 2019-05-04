@@ -1,0 +1,8 @@
+{
+  "short_name": "divergent3d-coding-test",
+  "name": "divergent3d-coding-test",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
