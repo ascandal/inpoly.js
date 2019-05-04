@@ -47,3 +47,17 @@ describe('Rectangle doRectaglesOverlap', () => {
     expect(rect1.doRectaglesOverlap(rect2)).toBe(false);
   })
 })
+
+
+describe('Rectangle sumOfPointsInRectangle', () => {
+  it('sum up x and y coordinates of all points that fall in rectangle', () => {
+    const rect1 = new Rectangle(new Point(0, 0), new Point(1, 1));
+
+    let pointArray = [];
+    pointArray.push(new Point(0.5, 0.5));
+    pointArray.push(new Point(0.5, 1));
+    pointArray.push(new Point(2, 2));
+
+    expect(rect1.sumOfPointsInRectangle(pointArray)).toBe(2.5);
+  })
+})
