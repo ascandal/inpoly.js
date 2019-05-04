@@ -56,4 +56,4 @@ npm run test
 
 ## License
 
-MIT © [ascandal](https://github.com/ascandal)
+[MIT License](LICENSE). © [ascandal](https://github.com/ascandal)
