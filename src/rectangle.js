@@ -67,10 +67,11 @@ export default class Rectangle {
 
   /*
    * Calculate the sum of all points that are in the rectangle.
-   * ptArray is preprocessed. Sorted from least to greatest.
+   * ptArray is preprocessed. Sorted from least to greatest in the x-coordinate.
    * Run time complexity is O(n).
    * Memory complexity is O(1).
    */
-  // sumOfPreprocessedPointsInRectangle(ptArray) {
-  // }
+  sumOfPreprocessedPointsInRectangle(ptArray) {
+
+  }
 }
