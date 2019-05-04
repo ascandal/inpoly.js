@@ -4,6 +4,28 @@
 
 [![NPM](https://img.shields.io/npm/v/divergent3d-coding-test.svg)](https://www.npmjs.com/package/divergent3d-coding-test) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Notes for Interviewer
+
+- I am aware and feel as if I should have done this proplem using c++ instead of Javascript. I proceeded with javascript since I had the testing and development environment setup right at the start of the test time. However, I see no issues with implementing the same code in c++.
+
+- Part 2 asks for an `array of doubles` as input to `sumOfPointsInRectangle`. However I implemented it using an `array of Points`. An additional routine can be added to accept `array of doubles` for additional functionality if need be.
+
+ - The non-optimized `sumOfPointsInRectangle` has time complexity `O(n)` and memory complexity `O(1)`.
+
+ - Since Javascript is not type-safe, some of the issues were removed when using `double` or `int` point coordinates. However this can be safely implemented in c++ using type casting.
+
+- Part 3. To preprocess the input `array of doubles`.
+
+  - We can calculate the bounding rectangle of all the points in the array. Then the bounding rectangle can be used to quickly check for overlay with the base rectangle.
+
+  - We can use the area of overlap to calculate an upper bound for the sum.
+
+  - The array can also first be sorted (e.g. using MergeSort) in one or both coordinate directions. Then `sumOfPreprocessedPointsInRectangle` could use a binary search (e.g. MergeSearch) to narrow down the range of indices of points that are in the rectangle.
+
+    - This could give a time complexity of O(log n) but with a slight increase in memory complexity due to the binary search.
+
+
+
 ## Install
 
 Clone the github repository.
