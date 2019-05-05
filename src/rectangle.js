@@ -52,9 +52,14 @@ export default class Rectangle {
    * Run time complexity is O(n).
    * Memory complexity is O(1).
    */
-  sumOfPointsInRectangle(ptArray) {
+  sumOfPointsInRectangle(ptArray, ptArrayBoundingRect) {
     let sum = 0;
     let ptArrayLength = ptArray.length;
+
+    // return right away if bounding rectangle does not overlay.
+    if (ptArrayBoundingRect && !this.doRectaglesOverlap(ptArrayBoundingRect)) {
+      return sum;
+    }
 
     for (let index = 0; index < ptArrayLength; index++) {
       if (this.isPointInRectangle(ptArray[index])) {

@@ -1,5 +1,6 @@
 import Point from './point.js'
 import Rectangle from './rectangle.js'
+import {calculateBoundingRectangle} from './utilities.js'
 
 describe('Rectangle isPointInRectangle', () => {
   it('point in rectangle', () => {
@@ -59,5 +60,18 @@ describe('Rectangle sumOfPointsInRectangle', () => {
     pointArray.push(new Point(2, 2));
 
     expect(rect1.sumOfPointsInRectangle(pointArray)).toBe(2.5);
+  })
+
+  it('given bounding rectangle', () => {
+    const rect1 = new Rectangle(new Point(0, 0), new Point(1, 1));
+
+    let pointArray = [];
+    pointArray.push(new Point(0.5, 0.5));
+    pointArray.push(new Point(0.5, 1));
+    pointArray.push(new Point(2, 2));
+
+    const ptBoundingRect = calculateBoundingRectangle(pointArray);
+
+    expect(rect1.sumOfPointsInRectangle(pointArray, ptBoundingRect)).toBe(2.5);
   })
 })
