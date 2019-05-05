@@ -54,7 +54,7 @@ export default class Rectangle {
    */
   sumOfPointsInRectangle(ptArray, ptArrayBoundingRect) {
     let sum = 0;
-    let ptArrayLength = ptArray.length;
+    const ptArrayLength = ptArray.length;
 
     // return right away if bounding rectangle does not overlay.
     if (ptArrayBoundingRect && !this.doRectaglesOverlap(ptArrayBoundingRect)) {
@@ -72,11 +72,19 @@ export default class Rectangle {
 
   /*
    * Calculate the sum of all points that are in the rectangle.
-   * ptArray is preprocessed. Sorted from least to greatest in the x-coordinate.
-   * Run time complexity is O(n).
-   * Memory complexity is O(1).
+   * ptArray is preprocessed by a kdTree.
+   * Run time complexity is O(d*n^(1-1/d))
+   * Memory complexity is O(1)
    */
-  sumOfPreprocessedPointsInRectangle(ptArray) {
+  sumOfPreprocessedPointsInRectangle(ptArray, kdTree) {
+    let sum = 0;
 
+    // Iterate over all points in the bounding box
+    // idx = index of point in points array
+    kdTree.range([this.a.x, this.a.y], [this.b.x, this.b.y], (idx) => {
+      sum += ptArray[idx][0] + ptArray[idx][1];
+    });
+
+    return sum;
   }
 }

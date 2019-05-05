@@ -1,6 +1,7 @@
-import Point from './point.js'
-import Rectangle from './rectangle.js'
-import {calculateBoundingRectangle} from './utilities.js'
+import Point from './point.js';
+import Rectangle from './rectangle.js';
+import {calculateBoundingRectangle} from './utilities.js';
+const createKDTree = require("static-kdtree");
 
 describe('Rectangle isPointInRectangle', () => {
   it('point in rectangle', () => {
@@ -73,5 +74,22 @@ describe('Rectangle sumOfPointsInRectangle', () => {
     const ptBoundingRect = calculateBoundingRectangle(pointArray);
 
     expect(rect1.sumOfPointsInRectangle(pointArray, ptBoundingRect)).toBe(2.5);
+  })
+})
+
+
+describe('Rectangle sumOfPreprocessedPointsInRectangle', () => {
+  it('given preprocessed kd-tree data structure', () => {
+    const rect1 = new Rectangle(new Point(0, 0), new Point(1, 1));
+
+    let pointArray = [
+      [0.5, 0.5],
+      [0.5, 1.0],
+      [2.0, 2.0]
+    ];
+
+    const kdTree = createKDTree(pointArray);
+
+    expect(rect1.sumOfPreprocessedPointsInRectangle(pointArray, kdTree)).toBe(2.5);
   })
 })
