@@ -24,7 +24,7 @@
 
   - A sub gridding method to break down the ractangle into sections could also give a time performance boost if the point distribution is clustered in certain sections.
 
-  - A kd-tree range search method would seem to be the most appropriate. This type of search method Performs in time complexity O(log n).
+  - A kd-tree range search method would seem to be the most appropriate. This type of search method Performs in time complexity O(d*n^(1-1/d)) wehre d is the dimension. Charts for this package give a good complexity table for reference [static-kdtree](https://www.npmjs.com/package/static-kdtree).
 
     - This optimization has been implemented using the npm package [static-kdtree](https://www.npmjs.com/package/static-kdtree), for method `sumOfPreprocessedPointsInRectangle`. The methodology is sound. However memory performance might be achieved by implementing a kd-tree that operates on the same element structure as our ptArray. That is, if the ptArray is defined as an array of Points then this must be converted to an array of doubles.
 
