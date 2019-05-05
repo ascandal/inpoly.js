@@ -16,13 +16,15 @@
 
 - Part 3. To preprocess the input `array of doubles`.
 
-  - We can calculate the bounding rectangle of all the points in the array. Then the bounding rectangle can be used to quickly check for overlay with the base rectangle.
+  - We can calculate the bounding rectangle of all the points in the array. Then the bounding rectangle can be used to quickly check for overlay with the base rectangle. This is implemented as an optional parameter to the `sumOfPointsInRectangle` method.
 
-  - We can use the area of overlap to calculate an upper bound for the sum.
-
-  - The array can also first be sorted (e.g. using MergeSort) in one or both coordinate directions. Then `sumOfPreprocessedPointsInRectangle` could use a binary search (e.g. MergeSearch) to narrow down the range of indices of points that are in the rectangle.
+  - The array can also first be sorted (e.g. using MergeSort) in one or both coordinate directions (one array for each sort direction). Then `sumOfPreprocessedPointsInRectangle` could use a binary search (e.g. MergeSearch) to narrow down the range of indices of points that are in the rectangle.
 
     - This could give a time complexity of O(log n) but with a slight increase in memory complexity due to the binary search.
+
+  - A kd-tree range search method would seem to be the most appropriate. This type of search method Performs in time complexity O(log n).
+
+  - A sub gridding method to break down the ractangle into sections could also give a time performance boost if the point distribution is clustered in certain sections.
 
 
 
