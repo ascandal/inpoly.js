@@ -20,7 +20,7 @@
 
   - The array can also first be sorted (e.g. using MergeSort) in one or both coordinate directions (one array for each sort direction). Then `sumOfPreprocessedPointsInRectangle` could use a binary search (e.g. MergeSearch) to narrow down the range of indices of points that are in the rectangle.
 
-    - This could give a time complexity of O(log n) but with a slight increase in memory complexity due to the binary search.
+    - This could give a time complexity of O(log n) but with a slight increase in memory complexity due to the binary search. However this strategy is more then likely to give the worst case complexity O(n) most of the time, because it is only really suited for 1D data sets.
 
   - A kd-tree range search method would seem to be the most appropriate. This type of search method Performs in time complexity O(log n).
 
