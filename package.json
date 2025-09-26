@@ -1,10 +1,10 @@
 {
-  "name": "divergent3d-coding-test",
+  "name": "inpoly.js",
   "version": "1.0.0",
-  "description": "Coding test for Deivergent3D interview.",
+  "description": "A small JavaScript library for spatial queries.",
   "author": "ascandal",
   "license": "MIT",
-  "repository": "ascandal/divergent3d-coding-test",
+  "repository": "ascandal/inpoly.js",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",

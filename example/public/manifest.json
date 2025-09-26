@@ -1,6 +1,6 @@
 {
-  "short_name": "divergent3d-coding-test",
-  "name": "divergent3d-coding-test",
+  "short_name": "inpoly.js",
+  "name": "inpoly.js",
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",

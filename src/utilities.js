@@ -1,4 +1,4 @@
-import Rectangle from './rectangle.js'
+import Rectangle from './rectangle.js';
 import Point from './point.js';
 
 /*
