@@ -1,7 +1,5 @@
 # inpoly.js — Geometric Overlap & Range Queries
 
-[![NPM](https://img.shields.io/npm/v/inpoly.js.svg)](https://www.npmjs.com/package/inpoly.js) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
 A small JavaScript library and example app for spatial queries, focused on summing values for points that fall within an axis‑aligned rectangle, with options for preprocessing and method of choice. The code is written in JavaScript for rapid iteration.
 
 ---
@@ -12,7 +10,7 @@ This project provides:
 
 - **Baseline scan** for `sumOfPointsInRectangle` with time complexity **O(n)** and memory complexity **O(1)**.
 - **Optional fast‑reject** using a **bounding rectangle** of all points to quickly test overlap with a query rectangle.
-- **Preprocessing options** to narrow candidate points (sorting + binary search, sub‑gridding).
+- **Preprocessing options** to narrow candidate points (sorting + binary search, subgridding).
 - **KD‑tree acceleration** via [`static-kdtree`](https://www.npmjs.com/package/static-kdtree) for efficient range queries.
 
 ---
@@ -36,8 +34,8 @@ This project provides:
   - Sort the array in one or both coordinate directions (e.g., **MergeSort**) and use binary search (e.g. **MergeSearch**) to narrow the index range of candidate points for a query rectangle.
   - While this can yield time complexity **O(log n)** in 1D with a slight increase in memory, due to binary search, the worst‑case behavior for 2D often remains **O(n)**, so overall gains can be modest.
 
-- **Sub‑gridding:**
-  - Partition the rectangle into sub‑grids to exploit clustered point distributions and reduce per‑query candidate sets.
+- **Subgridding:**
+  - Partition the rectangle into subgrids to exploit clustered point distributions and reduce per‑query candidate sets.
 
 - **KD‑tree range search:**
   - Use a KD‑tree for orthogonal range queries. Theoretical performance is **O(d·n^(1−1/d))**, where *d* is the dimension. This project demonstrates the approach using the npm package [`static-kdtree`](https://www.npmjs.com/package/static-kdtree) in `sumOfPreprocessedPointsInRectangle`.
@@ -57,7 +55,7 @@ cd inpoly.js
 Install dependencies:
 
 ```bash
-npm install --save inpoly.js
+npm install
 ```
 
 ---
@@ -70,7 +68,7 @@ The environment was set up using [`create-react-library`](https://github.com/tra
 1. **Build App** — runs **Rollup** to watch `src/` and bundles distribution in `dist/`:
 
   ```bash
-  npm start
+  npm run start
   ```
 
 2. **Run App** — runs the `example/` React App, linked to the local build:
@@ -80,7 +78,7 @@ The environment was set up using [`create-react-library`](https://github.com/tra
   ```bash
   # (in another tab)
   cd example
-  npm start
+  npm run start
   ```
 
 Any changes to `src/` or `example/src` will trigger live reload in the dev server.
