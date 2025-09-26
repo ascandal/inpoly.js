@@ -1,6 +1,8 @@
 # inpoly.js — Geometric Overlap & Range Queries
 
-A small JavaScript library and example app for spatial queries, focused on summing values for points that fall within an axis‑aligned rectangle, with options for preprocessing and method of choice. The code is written in JavaScript for rapid iteration.
+A small JavaScript library for spatial queries, focused on summing values for points that fall within an axis‑aligned rectangle, with options for preprocessing and method of choice. The code is written in JavaScript for rapid iteration.
+
+> Demo React App in `./dev/`.
 
 ---
 
@@ -70,17 +72,17 @@ The environment was set up using [`create-react-library`](https://github.com/tra
 npm run start
 ```
 
-2. **Run App** — runs the `example/` React App, linked to the local build:
+2. **Run App** — runs the `dev/` React App, linked to the local build:
 
 In a new terminal window:
 
 ```bash
 # (in another tab)
-cd example
+cd dev
 npm run start
 ```
 
-Any changes to `src/` or `example/src` will trigger live reload in the dev server.
+Any changes to `src/` or `dev/src` will trigger live reload in the dev server.
 
 ---
 

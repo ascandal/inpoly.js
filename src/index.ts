@@ -17,5 +17,4 @@ export { Point, Rectangle, calculateBoundingRectangle };
 // Type-only exports (erased from the JS bundle)
 // ─────────────────────────────────────────────
 // export type {
-//
 // } from "./types/inpoly.js";

@@ -1,15 +1,27 @@
-import Point from "./point.js";
+import { Point } from "./point.js";
+
+export type RectangleOptions = {
+    isInteger?: boolean;
+};
 
 const defaultRectangleOptions = {
     isInteger: false,
 };
 
 export class Rectangle {
+    public a!: Point;
+    public b!: Point;
+    private _options: RectangleOptions = {};
+
     /*
      * Initialize parameter options and bounding points.
      * a, b refer to opposing points of the rectangle.
      */
-    constructor(a, b, options = {}) {
+    constructor(
+        a: Point,
+        b: Point,
+        options: RectangleOptions = defaultRectangleOptions,
+    ) {
         this._options = { ...defaultRectangleOptions, ...options };
         this.setBoundingPoints(a, b);
     }
@@ -17,12 +29,12 @@ export class Rectangle {
     /*
      * Using floor to give c++ int behavior if isInteger == true.
      */
-    setBoundingPoints(a = new Point(), b = new Point()) {
-        this.a = a;
-        this.b = b;
+    setBoundingPoints(a?: Point, b?: Point) {
+        this.a = a || new Point();
+        this.b = b || new Point();
     }
 
-    isPointInRectangle(pt) {
+    isPointInRectangle(pt: Point) {
         let xTest = this.a.x <= pt.x && pt.x <= this.b.x;
         let yTest = this.a.y <= pt.y && pt.y <= this.b.y;
 
@@ -32,7 +44,7 @@ export class Rectangle {
     /*
      * Check if the rectables overlap by any amount.
      */
-    doRectaglesOverlap(rect) {
+    doRectaglesOverlap(rect: Rectangle) {
         // check if rectangles are out-of-range in x direction.
         if (rect.a.x > this.b.x || this.a.x > rect.b.x) {
             return false;
@@ -52,7 +64,7 @@ export class Rectangle {
      * Run time complexity is O(n).
      * Memory complexity is O(1).
      */
-    sumOfPointsInRectangle(ptArray, ptArrayBoundingRect) {
+    sumOfPointsInRectangle(ptArray: Point[], ptArrayBoundingRect: Rectangle) {
         let sum = 0;
         const ptArrayLength = ptArray.length;
 
@@ -79,14 +91,21 @@ export class Rectangle {
      * Run time complexity is O(d*n^(1-1/d))
      * Memory complexity is O(1)
      */
-    sumOfPreprocessedPointsInRectangle(ptArray, kdTree) {
+    sumOfPreprocessedPointsInRectangle(
+        ptArray: Array<[number, number]>,
+        kdTree: any,
+    ) {
         let sum = 0;
 
         // Iterate over all points in the bounding box
         // idx = index of point in points array
-        kdTree.range([this.a.x, this.a.y], [this.b.x, this.b.y], (idx) => {
-            sum += ptArray[idx][0] + ptArray[idx][1];
-        });
+        kdTree.range(
+            [this.a.x, this.a.y],
+            [this.b.x, this.b.y],
+            (idx: number) => {
+                sum += ptArray[idx][0] + ptArray[idx][1];
+            },
+        );
 
         return sum;
     }

@@ -1,10 +1,10 @@
-import Rectangle from "./rectangle.js";
-import Point from "./point.js";
+import { Rectangle } from "./rectangle.js";
+import { Point } from "./point.js";
 
 /*
  * Returns the rectangle that contains all the points in the given array.
  */
-export function calculateBoundingRectangle(ptArray) {
+export function calculateBoundingRectangle(ptArray: Point[]) {
     let minX = Number.MAX_SAFE_INTEGER;
     let minY = Number.MAX_SAFE_INTEGER;
 

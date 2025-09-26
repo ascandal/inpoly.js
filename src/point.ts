@@ -1,12 +1,23 @@
+export type PointOptions = {
+    isInteger?: boolean;
+};
+
 const defaultPointOptions = {
     isInteger: false,
 };
 
 export class Point {
+    public x!: number;
+    public y!: number;
+    private _options: PointOptions = {};
     /*
      * Initialize parameter options and position coordinates.
      */
-    constructor(x, y, options = {}) {
+    constructor(
+        x?: number,
+        y?: number,
+        options: PointOptions = defaultPointOptions,
+    ) {
         this._options = { ...defaultPointOptions, ...options };
         this.setPosition(x, y);
     }
