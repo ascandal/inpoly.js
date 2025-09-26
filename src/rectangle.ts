@@ -35,8 +35,8 @@ export class Rectangle {
     }
 
     isPointInRectangle(pt: Point) {
-        let xTest = this.a.x <= pt.x && pt.x <= this.b.x;
-        let yTest = this.a.y <= pt.y && pt.y <= this.b.y;
+        const xTest = this.a.x <= pt.x && pt.x <= this.b.x;
+        const yTest = this.a.y <= pt.y && pt.y <= this.b.y;
 
         return xTest && yTest;
     }

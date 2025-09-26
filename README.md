@@ -66,20 +66,23 @@ npm install
 
 The environment was set up using [`create-react-library`](https://github.com/transitive-bullshit/create-react-library#readme). Requires `node >= 4`, but `node >= 8` is recommended.
 
-1. **Build App** — runs **Rollup** to watch `src/` and bundles distribution in `dist/`:
+1. **Build inpoly.js Library:**
+
+Runs **tsdown** to bundle `src/` and into distribution `dist/`:
 
 ```bash
-npm run start
+npm run build
 ```
 
-2. **Run App** — runs the `dev/` React App, linked to the local build:
+2. **Run App:**
+
+Runs the `dev/` **Vite React App**, linked to the local build:
 
 In a new terminal window:
 
 ```bash
-# (in another tab)
 cd dev
-npm run start
+npm run dev
 ```
 
 Any changes to `src/` or `dev/src` will trigger live reload in the dev server.
@@ -88,7 +91,7 @@ Any changes to `src/` or `dev/src` will trigger live reload in the dev server.
 
 ## Test
 
-Run unit and functional tests:
+Run unit and functional tests using `node --test`:
 
 ```bash
 npm run test
