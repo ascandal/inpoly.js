@@ -4,7 +4,7 @@ const defaultRectangleOptions = {
     isInteger: false,
 };
 
-export default class Rectangle {
+export class Rectangle {
     /*
      * Initialize parameter options and bounding points.
      * a, b refer to opposing points of the rectangle.

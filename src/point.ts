@@ -2,7 +2,7 @@ const defaultPointOptions = {
     isInteger: false,
 };
 
-export default class Point {
+export class Point {
     /*
      * Initialize parameter options and position coordinates.
      */
