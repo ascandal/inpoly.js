@@ -44,7 +44,7 @@ export class Rectangle {
     /*
      * Check if the rectables overlap by any amount.
      */
-    doRectaglesOverlap(rect: Rectangle) {
+    doRectanglesOverlap(rect: Rectangle) {
         // check if rectangles are out-of-range in x direction.
         if (rect.a.x > this.b.x || this.a.x > rect.b.x) {
             return false;
@@ -71,7 +71,7 @@ export class Rectangle {
         // return right away if bounding rectangle does not overlay.
         if (
             ptArrayBoundingRect &&
-            !this.doRectaglesOverlap(ptArrayBoundingRect)
+            !this.doRectanglesOverlap(ptArrayBoundingRect)
         ) {
             return sum;
         }

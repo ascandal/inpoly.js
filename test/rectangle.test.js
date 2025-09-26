@@ -30,26 +30,26 @@ describe("Rectangle isPointInRectangle", () => {
     });
 });
 
-describe("Rectangle doRectaglesOverlap", () => {
+describe("Rectangle doRectanglesOverlap", () => {
     it("rectangles overlap", () => {
         const rect1 = new Rectangle(new Point(0, 0), new Point(1, 1));
         const rect2 = new Rectangle(new Point(0.5, 0.5), new Point(2, 2));
 
-        assert.strictEqual(rect1.doRectaglesOverlap(rect2), true);
+        assert.strictEqual(rect1.doRectanglesOverlap(rect2), true);
     });
 
     it("rectangles overlap on boundary", () => {
         const rect1 = new Rectangle(new Point(0, 0), new Point(1, 1));
         const rect2 = new Rectangle(new Point(1, 1), new Point(2, 2));
 
-        assert.strictEqual(rect1.doRectaglesOverlap(rect2), true);
+        assert.strictEqual(rect1.doRectanglesOverlap(rect2), true);
     });
 
     it("rectangles do not overlap", () => {
         const rect1 = new Rectangle(new Point(0, 0), new Point(1, 1));
         const rect2 = new Rectangle(new Point(1.5, 1.5), new Point(2, 2));
 
-        assert.strictEqual(rect1.doRectaglesOverlap(rect2), false);
+        assert.strictEqual(rect1.doRectanglesOverlap(rect2), false);
     });
 });
 
