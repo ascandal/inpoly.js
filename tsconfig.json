@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+
+        "declaration": true,
+        "declarationMap": false, // don't emit .d.ts maps (avoid source leakage)
+        "outDir": "dist",
+        "rootDir": ".",
+
+        "sourceMap": false, // rely on bundler if you ever need maps; keep off for publish
+        "strict": true,
+
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "noEmit": true,
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "jsx": "react-jsx",
+        "baseUrl": ".",
+
+        // Clean public typings
+        "stripInternal": true, // drop items marked with /** @internal */
+        "removeComments": true,
+
+        // Make single-file transforms safe for bundlers and ensure types are erased
+        "verbatimModuleSyntax": true,
+        "isolatedModules": true
+    },
+    "include": ["src", "plugins", "tsdown.config.ts"]
+    // "include": ["src/**/*"]
+}
