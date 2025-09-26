@@ -1,83 +1,101 @@
-# divergent3d-coding-test
+# inpoly.js — Geometric Overlap & Range Queries
 
-> Coding test for Divergent3D interview.
+[![NPM](https://img.shields.io/npm/v/inpoly.js.svg)](https://www.npmjs.com/package/inpoly.js) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-[![NPM](https://img.shields.io/npm/v/divergent3d-coding-test.svg)](https://www.npmjs.com/package/divergent3d-coding-test) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+A small JavaScript library and example app for spatial queries, focused on summing values for points that fall within an axis‑aligned rectangle, with options for preprocessing and method of choice. The code is written in JavaScript for rapid iteration.
 
-## Notes for Interviewer
+---
 
-- I am aware and feel as if I should have done this proplem using c++ instead of Javascript. I proceeded with javascript since I had the testing and development environment setup right at the start of the test time. However, I see no issues with implementing the same code in c++.
+## Overview
 
-- Part 2 asks for an `array of doubles` as input to `sumOfPointsInRectangle`. However I implemented it using an `array of Points`. An additional routine can be added to accept `array of doubles` for additional functionality if need be.
+This project provides:
 
- - The non-optimized `sumOfPointsInRectangle` has time complexity `O(n)` and memory complexity `O(1)`.
+- **Baseline scan** for `sumOfPointsInRectangle` with time complexity **O(n)** and memory complexity **O(1)**.
+- **Optional fast‑reject** using a **bounding rectangle** of all points to quickly test overlap with a query rectangle.
+- **Preprocessing options** to narrow candidate points (sorting + binary search, sub‑gridding).
+- **KD‑tree acceleration** via [`static-kdtree`](https://www.npmjs.com/package/static-kdtree) for efficient range queries.
 
- - Since Javascript is not type-safe, some of the issues were removed when using `double` or `int` point coordinates. However this can be safely implemented in c++ using type casting.
+---
 
-- Part 3. To preprocess the input `array of doubles`.
+## Implementation Notes
 
-  - We can calculate the bounding rectangle of all the points in the array. Then the bounding rectangle can be used to quickly check for overlay with the base rectangle. This is implemented as an optional parameter to the `sumOfPointsInRectangle` method.
+- **Language choice.** Although implemented in JavaScript, the same approach can be ported to C++ (with explicit casts and strong typing) without loss of generality.
 
-  - The array can also first be sorted (e.g. using MergeSort) in one or both coordinate directions (one array for each sort direction). Then `sumOfPreprocessedPointsInRectangle` could use a binary search (e.g. MergeSearch) to narrow down the range of indices of points that are in the rectangle.
+- **Input shape for `sumOfPointsInRectangle`.** Some interfaces expect an **array of doubles**; this implementation currently accepts an **array of `Point` objects**. If desired, an additional routine can be added to accept an array of doubles for parity with those interfaces.
 
-    - This could give a time complexity of O(log n) but with a slight increase in memory complexity due to the binary search. However this strategy is more then likely to give the worst case complexity O(n) most of the time, because it is only really suited for 1D data sets.
+- **Complexity of the baseline method.** The non‑optimized `sumOfPointsInRectangle` runs in **O(n)** time and **O(1)** extra memory.
 
-  - A sub gridding method to break down the ractangle into sections could also give a time performance boost if the point distribution is clustered in certain sections.
+- **Type considerations.** JavaScript is not statically typed and uses floating‑point numbers for numeric values; a C++ implementation can use appropriate numeric types and casting for type safety.
 
-  - A kd-tree range search method would seem to be the most appropriate. This type of search method Performs in time complexity O(d*n^(1-1/d)) wehre d is the dimension. Charts for this package give a good complexity table for reference [static-kdtree](https://www.npmjs.com/package/static-kdtree).
+### Preprocessing & Optimization Strategies
 
-    - This optimization has been implemented using the npm package [static-kdtree](https://www.npmjs.com/package/static-kdtree), for method `sumOfPreprocessedPointsInRectangle`. The methodology is sound. However memory performance might be achieved by implementing a kd-tree that operates on the same element structure as our ptArray. That is, if the ptArray is defined as an array of Points then this must be converted to an array of doubles.
+- **Bounding rectangle:**
+  - Compute the bounding rectangle of all points once and use it to quickly check **overlap** with each query rectangle. This is implemented as an optional parameter to `sumOfPointsInRectangle`.
 
+- **Sorting + binary search:**
+  - Sort the array in one or both coordinate directions (e.g., **MergeSort**) and use binary search (e.g. **MergeSearch**) to narrow the index range of candidate points for a query rectangle.
+  - While this can yield time complexity **O(log n)** in 1D with a slight increase in memory, due to binary search, the worst‑case behavior for 2D often remains **O(n)**, so overall gains can be modest.
+
+- **Sub‑gridding:**
+  - Partition the rectangle into sub‑grids to exploit clustered point distributions and reduce per‑query candidate sets.
+
+- **KD‑tree range search:**
+  - Use a KD‑tree for orthogonal range queries. Theoretical performance is **O(d·n^(1−1/d))**, where *d* is the dimension. This project demonstrates the approach using the npm package [`static-kdtree`](https://www.npmjs.com/package/static-kdtree) in `sumOfPreprocessedPointsInRectangle`.
+  - For best memory performance, construct the KD‑tree directly from the underlying numeric array layout (e.g., an array of doubles) to avoid intermediate object conversions.
+
+---
 
 ## Install
 
-Clone the github repository.
+Clone the GitHub repository:
 
 ```bash
-git clone git@github.com:ascandal/divergent3d-coding-test.git
+git clone git@github.com:ascandal/inpoly.js.git
+cd inpoly.js
 ```
 
-Change directories into the repository root directory.
+Install dependencies:
 
 ```bash
-cd divergent3d-coding-test
+npm install --save inpoly.js
 ```
 
-Install the dependencies.
-
-```bash
-npm install --save divergent3d-coding-test
-```
+---
 
 ## Development
 
-This development environment was setup useing [create-react-library](https://github.com/transitive-bullshit/create-react-library#readme). This package requires `node >= 4`, but we recommend `node >= 8`.
+The environment was set up using [`create-react-library`](https://github.com/transitive-bullshit/create-react-library#readme). Requires `node >= 4`, but `node >= 8` is recommended.
 
-Local development is broken into two parts (ideally using two tabs).
 
-First, run rollup to watch the `src/` module and automatically recompile it into `dist/` whenever you make changes.
+1. **Build App** — runs **Rollup** to watch `src/` and bundles distribution in `dist/`:
 
-```bash
-npm start # runs rollup with watch flag
-```
+  ```bash
+  npm start
+  ```
 
-The second part will be running the `example/` create-react-app that's linked to the local version of your module.
+2. **Run App** — runs the `example/` React App, linked to the local build:
 
-```bash
-# (in another tab)
-cd example
-npm start # runs create-react-app dev server
-```
+  In a new terminal window:
 
-Now, anytime you make a change to your library in `src/` or to the example app's `example/src`, `create-react-app` will live-reload your local dev server so you can iterate on your component in real-time.
+  ```bash
+  # (in another tab)
+  cd example
+  npm start
+  ```
+
+Any changes to `src/` or `example/src` will trigger live reload in the dev server.
+
+---
 
 ## Test
 
-To run the unit and functional tests.
+Run unit and functional tests:
 
 ```bash
 npm run test
 ```
+
+---
 
 ## License
 

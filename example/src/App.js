@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import ExampleComponent from 'divergent3d-coding-test'
+import ExampleComponent from 'inpoly.js'
 
 export default class App extends Component {
   render () {

@@ -1,6 +1,6 @@
 {
-  "name": "divergent3d-coding-test-example",
-  "homepage": "https://ascandal.github.io/divergent3d-coding-test",
+  "name": "inpoly.js-demo",
+  "homepage": "https://ascandal.github.io/inpoly.js",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
@@ -9,7 +9,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "divergent3d-coding-test": "file:.."
+    "inpoly.js": "file:.."
   },
   "scripts": {
     "start": "react-scripts start",
