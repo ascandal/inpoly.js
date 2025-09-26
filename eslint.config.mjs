@@ -61,7 +61,7 @@ export default tseslint.config(
 
     // Temporarily relax strict rules in dynamic code (prototype-heavy)
     {
-        files: ["src/dynamic/**/*.{ts,tsx,js}"],
+        files: ["src/**/*.{ts,tsx,js}"],
         rules: {
             "@typescript-eslint/no-explicit-any": "off",
             "@typescript-eslint/no-unused-vars": "off",
@@ -85,14 +85,6 @@ export default tseslint.config(
             "@typescript-eslint/no-explicit-any": "off",
             "@typescript-eslint/no-unused-vars": "off",
             "no-unused-vars": "off",
-        },
-    },
-    // Single-file relaxation (utils hot-spot)
-    {
-        files: ["src/utils.ts"],
-        rules: {
-            "@typescript-eslint/no-explicit-any": "off",
-            "@typescript-eslint/no-unused-vars": "off",
         },
     },
 );

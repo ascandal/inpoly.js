@@ -28,18 +28,18 @@ This project provides:
 ### Preprocessing & Optimization Strategies
 
 - **Bounding rectangle:**
-  - Compute the bounding rectangle of all points once and use it to quickly check **overlap** with each query rectangle. This is implemented as an optional parameter to `sumOfPointsInRectangle`.
+    - Compute the bounding rectangle of all points once and use it to quickly check **overlap** with each query rectangle. This is implemented as an optional parameter to `sumOfPointsInRectangle`.
 
 - **Sorting + binary search:**
-  - Sort the array in one or both coordinate directions (e.g., **MergeSort**) and use binary search (e.g. **MergeSearch**) to narrow the index range of candidate points for a query rectangle.
-  - While this can yield time complexity **O(log n)** in 1D with a slight increase in memory, due to binary search, the worst‑case behavior for 2D often remains **O(n)**, so overall gains can be modest.
+    - Sort the array in one or both coordinate directions (e.g., **MergeSort**) and use binary search (e.g. **MergeSearch**) to narrow the index range of candidate points for a query rectangle.
+    - While this can yield time complexity **O(log n)** in 1D with a slight increase in memory, due to binary search, the worst‑case behavior for 2D often remains **O(n)**, so overall gains can be modest.
 
 - **Subgridding:**
-  - Partition the rectangle into subgrids to exploit clustered point distributions and reduce per‑query candidate sets.
+    - Partition the rectangle into subgrids to exploit clustered point distributions and reduce per‑query candidate sets.
 
 - **KD‑tree range search:**
-  - Use a KD‑tree for orthogonal range queries. Theoretical performance is **O(d·n^(1−1/d))**, where *d* is the dimension. This project demonstrates the approach using the npm package [`static-kdtree`](https://www.npmjs.com/package/static-kdtree) in `sumOfPreprocessedPointsInRectangle`.
-  - For best memory performance, construct the KD‑tree directly from the underlying numeric array layout (e.g., an array of doubles) to avoid intermediate object conversions.
+    - Use a KD‑tree for orthogonal range queries. Theoretical performance is **O(d·n^(1−1/d))**, where _d_ is the dimension. This project demonstrates the approach using the npm package [`static-kdtree`](https://www.npmjs.com/package/static-kdtree) in `sumOfPreprocessedPointsInRectangle`.
+    - For best memory performance, construct the KD‑tree directly from the underlying numeric array layout (e.g., an array of doubles) to avoid intermediate object conversions.
 
 ---
 
@@ -64,22 +64,21 @@ npm install
 
 The environment was set up using [`create-react-library`](https://github.com/transitive-bullshit/create-react-library#readme). Requires `node >= 4`, but `node >= 8` is recommended.
 
-
 1. **Build App** — runs **Rollup** to watch `src/` and bundles distribution in `dist/`:
 
-  ```bash
-  npm run start
-  ```
+```bash
+npm run start
+```
 
 2. **Run App** — runs the `example/` React App, linked to the local build:
 
-  In a new terminal window:
+In a new terminal window:
 
-  ```bash
-  # (in another tab)
-  cd example
-  npm run start
-  ```
+```bash
+# (in another tab)
+cd example
+npm run start
+```
 
 Any changes to `src/` or `example/src` will trigger live reload in the dev server.
 
