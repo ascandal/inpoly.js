@@ -35,8 +35,8 @@ export class Rectangle {
     }
 
     isPointInRectangle(pt: Point) {
-        let xTest = this.a.x <= pt.x && pt.x <= this.b.x;
-        let yTest = this.a.y <= pt.y && pt.y <= this.b.y;
+        const xTest = this.a.x <= pt.x && pt.x <= this.b.x;
+        const yTest = this.a.y <= pt.y && pt.y <= this.b.y;
 
         return xTest && yTest;
     }
@@ -44,7 +44,7 @@ export class Rectangle {
     /*
      * Check if the rectables overlap by any amount.
      */
-    doRectaglesOverlap(rect: Rectangle) {
+    doRectanglesOverlap(rect: Rectangle) {
         // check if rectangles are out-of-range in x direction.
         if (rect.a.x > this.b.x || this.a.x > rect.b.x) {
             return false;
@@ -71,7 +71,7 @@ export class Rectangle {
         // return right away if bounding rectangle does not overlay.
         if (
             ptArrayBoundingRect &&
-            !this.doRectaglesOverlap(ptArrayBoundingRect)
+            !this.doRectanglesOverlap(ptArrayBoundingRect)
         ) {
             return sum;
         }

@@ -11,7 +11,7 @@ export function calculateBoundingRectangle(ptArray: Point[]) {
     let maxX = -Number.MAX_SAFE_INTEGER;
     let maxY = -Number.MAX_SAFE_INTEGER;
 
-    let ptArrayLength = ptArray.length;
+    const ptArrayLength = ptArray.length;
 
     for (let index = 0; index < ptArrayLength; index++) {
         minX = Math.min(ptArray[index].x, minX);

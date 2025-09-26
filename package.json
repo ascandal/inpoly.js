@@ -56,8 +56,7 @@
         "serve:html": "npx http-server -c-1 -p 8080",
         "serve:dev": "vite dev",
         "preview": "vite preview",
-        "test": "npm run build && playwright install --with-deps && playwright test",
-        "test:headed": "npm run build && playwright install --with-deps && playwright test --headed",
+        "test": "node --test",
         "prepublishOnly:all": "npm run typecheck && npm run lint && npm run build",
         "ci": "npm run build && npm run check-format && npm run test"
     },
