@@ -7,7 +7,6 @@ export default defineConfig({
     // Entrypoints and outputs
     entry: {
         index: "src/index.ts",
-        "react/index": "./src/react/index.ts",
     },
     format: ["esm", "cjs"],
     fixedExtension: true,
