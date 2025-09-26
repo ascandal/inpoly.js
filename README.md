@@ -2,8 +2,6 @@
 
 A small JavaScript library for spatial queries, focused on summing values for points that fall within an axis‑aligned rectangle, with options for preprocessing and method of choice. The code is written in JavaScript for rapid iteration.
 
-> Demo React App in `./dev/`.
-
 ---
 
 ## Overview
@@ -63,8 +61,6 @@ npm install
 ---
 
 ## Development
-
-The environment was set up using [`create-react-library`](https://github.com/transitive-bullshit/create-react-library#readme). Requires `node >= 4`, but `node >= 8` is recommended.
 
 1. **Build inpoly.js Library:**
 
